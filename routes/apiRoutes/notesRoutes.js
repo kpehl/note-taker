@@ -1,6 +1,6 @@
 // Dependencies
 const router = require('express').Router();
-const { createNewNote, validateNote } = require('../../lib/notes');
+const { postNote, validateNote } = require('../../lib/notes');
 const { notes } = require('../../db/db');
 
 // Routes used for the Notes API
@@ -20,7 +20,7 @@ router.post('/notes', (req, res) => {
         res.status(400).send('The note is not properly formatted.');
     } else {
         // add note to json file and animals array with createNewAnimal()
-        const note = createNewNote(req.body, notes);
+        const note = postNote(req.body, notes);
         // send the response (new animal) in json format back to the client
         res.json(note);
     }
