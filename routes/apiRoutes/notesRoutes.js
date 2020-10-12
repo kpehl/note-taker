@@ -1,6 +1,6 @@
 // Dependencies
 const router = require('express').Router();
-const { postNote, validateNote } = require('../../lib/notes');
+const { postNote, validateNote, findById } = require('../../lib/notes');
 const { notes } = require('../../db/db');
 
 // Routes used for the Notes API
@@ -9,6 +9,16 @@ const { notes } = require('../../db/db');
 router.get('/notes', (req, res) => {
     let results = notes;
     res.json(results);
+});
+
+// A route for requesting notes data by id
+router.get('/notes/:id', (req, res) => {
+    const result = findById(req.params.id, notes);
+    if (result) {
+      res.json(result);
+    } else {
+      res.send(404);
+    }
 });
 
 // A route for posting a new note
