@@ -1,6 +1,7 @@
 // Dependencies
 const router = require('express').Router();
 const { postNote, validateNote, findById, deleteByID } = require('../../lib/notes');
+const shortid = require('shortid');
 const { notes } = require('../../db/db');
 
 // Routes used for the Notes API
@@ -23,8 +24,8 @@ router.get('/notes/:id', (req, res) => {
 
 // A route for posting a new note
 router.post('/notes', (req, res) => {
-    // set the id for the new note based on what the next index of the array will be
-    req.body.id = notes.length.toString();
+    // set the id for the new note
+    req.body.id = shortid.generate();
     // validate the new note data, and if anything in the req.body is incorrect, send back a 400 error "Bad Request"
     if(!validateNote(req.body)) {
         res.status(400).send('The note is not properly formatted.');

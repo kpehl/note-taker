@@ -1,14 +1,29 @@
 {
   "notes": [
     {
-      "title": "Test Title",
-      "text": "Test text",
-      "id": "test_id"
+      "title": "Plan the weekly menu",
+      "text": "Plan dinners for the week.  Remember Cub Scouts and class Tuesday, class Wednesday, class Thursday",
+      "id": "kAbOKAUYU"
     },
     {
-      "title": "New Test Title",
-      "text": "New test text",
-      "id": "1"
+      "title": "Make a grocery list",
+      "text": "Make a grocery list with the necessary things for dinners, plus snacks for sack lunches",
+      "id": "cz3snyNvG"
+    },
+    {
+      "title": "Order toothpicks",
+      "text": "Order new decorative toothpicks for bento boxes",
+      "id": "AkSHQMnIB"
+    },
+    {
+      "title": "Make rice",
+      "text": "Make a big batch of rice for lunches this week",
+      "id": "gY310mXo6"
+    },
+    {
+      "title": "Pick up dry cleaning",
+      "text": "Pick up the dry cleaning from the cleaners",
+      "id": "CVJtvgBSL"
     }
   ]
 }
