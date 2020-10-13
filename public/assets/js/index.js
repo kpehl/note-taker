@@ -50,8 +50,12 @@ var renderActiveNote = function() {
 };
 
 // If the user wants to edit, render the note active, delete the old entry, and make the attributes editable
+// The new note button is hidden so the user does not unintentionally delete a note
 var handleEditBtn = function(event) {
   event.stopPropagation();
+
+  $newNoteBtn.hide();
+  $saveNoteBtn.show();
 
   var note = $(this)
   .parent(".list-group-item")
@@ -63,17 +67,6 @@ var handleEditBtn = function(event) {
   $noteText.val(note.text);
 
   deleteNote(note.id)
-
-  // var updatedNote = {
-  //   title: $noteTitle.val(),
-  //   text: $noteText.val()
-  // };
-
-  // saveNote(updatedNote)
-  // .then(function(data) {
-  //   getAndRenderNotes();
-  //   renderActiveNote();
-  // })
 
 }
 
@@ -87,6 +80,7 @@ var handleNoteSave = function() {
   saveNote(newNote).then(function(data) {
     getAndRenderNotes();
     renderActiveNote();
+    $newNoteBtn.show();
   });
 };
 
