@@ -49,6 +49,34 @@ var renderActiveNote = function() {
   }
 };
 
+// If the user wants to edit, render the note active, delete the old entry, and make the attributes editable
+var handleEditBtn = function(event) {
+  event.stopPropagation();
+
+  var note = $(this)
+  .parent(".list-group-item")
+  .data();
+
+  $noteTitle.attr("readonly", false);
+  $noteText.attr("readonly", false);
+  $noteTitle.val(note.title);
+  $noteText.val(note.text);
+
+  deleteNote(note.id)
+
+  // var updatedNote = {
+  //   title: $noteTitle.val(),
+  //   text: $noteText.val()
+  // };
+
+  // saveNote(updatedNote)
+  // .then(function(data) {
+  //   getAndRenderNotes();
+  //   renderActiveNote();
+  // })
+
+}
+
 // Get the note data from the inputs, save it to the db and update the view
 var handleNoteSave = function() {
   var newNote = {
@@ -114,11 +142,18 @@ var renderNoteList = function(notes) {
 
     var $li = $("<li class='list-group-item'>").data(note);
     var $span = $("<span>").text(note.title);
-    var $delBtn = $(
-      "<i class='fas fa-trash-alt float-right text-danger delete-note'>"
+    var $editSpan = $("<span class = 'edit-note'>");
+    var $editBtn = $(
+      "<i class='far fa-edit float-left text-info'></i>"
     );
-
-    $li.append($span, $delBtn);
+    var $delSpan = $("<span class = 'delete-note'>");
+    var $delBtn = $(
+      "<i class='fas fa-trash-alt float-right text-danger'>"
+    );
+    
+    $editSpan.append($editBtn);
+    $delSpan.append($delBtn);
+    $li.append($editSpan, $span, $delSpan);
     noteListItems.push($li);
   }
 
@@ -133,6 +168,7 @@ var getAndRenderNotes = function() {
 };
 
 $saveNoteBtn.on("click", handleNoteSave);
+$noteList.on("click", ".edit-note", handleEditBtn);
 $noteList.on("click", ".list-group-item", handleNoteView);
 $newNoteBtn.on("click", handleNewNoteView);
 $noteList.on("click", ".delete-note", handleNoteDelete);
