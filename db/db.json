@@ -1,11 +1,6 @@
 {
   "notes": [
     {
-      "title": "Plan the weekly menu",
-      "text": "Plan dinners for the week.  Remember Cub Scouts and class Tuesday, class Wednesday, class Thursday",
-      "id": "kAbOKAUYU"
-    },
-    {
       "title": "Make a grocery list",
       "text": "Make a grocery list with the necessary things for dinners, plus snacks for sack lunches",
       "id": "cz3snyNvG"
@@ -24,6 +19,11 @@
       "title": "Pick up dry cleaning",
       "text": "Pick up the dry cleaning from the cleaners",
       "id": "CVJtvgBSL"
+    },
+    {
+      "title": "Plan the weekly menu",
+      "text": "Plan dinners for the week.  Remember Cub Scouts and class Tuesday, class Wednesday, class Thursday",
+      "id": "zuDyM9z3e"
     }
   ]
 }

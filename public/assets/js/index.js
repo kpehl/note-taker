@@ -49,8 +49,8 @@ var renderActiveNote = function() {
   }
 };
 
-// If the user wants to edit, render the note active, delete the old entry, and make the attributes editable
-// The new note button is hidden so the user does not unintentionally delete a note
+// If the user wants to edit, clear any previous active note, render the note active, delete the old entry, 
+//and make the attributes editable. The new note button is hidden so the user does not unintentionally delete a note.
 var handleEditBtn = function(event) {
   event.stopPropagation();
 
@@ -61,6 +61,10 @@ var handleEditBtn = function(event) {
   .parent(".list-group-item")
   .data();
 
+  if (activeNote.id === note.id) {
+    $saveNoteBtn.show();
+  }
+
   $noteTitle.attr("readonly", false);
   $noteText.attr("readonly", false);
   $noteTitle.val(note.title);
@@ -68,7 +72,7 @@ var handleEditBtn = function(event) {
 
   deleteNote(note.id)
 
-}
+};
 
 // Get the note data from the inputs, save it to the db and update the view
 var handleNoteSave = function() {
